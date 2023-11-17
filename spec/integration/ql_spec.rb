@@ -14,4 +14,13 @@ describe OverpassAPI::QL do
 
     expect(overpass.query(ba_query)[:elements]).to be_a(Array)
   end
+
+  it 'supports query with csv output' do
+
+    overpass = OverpassAPI::QL.new({out: 'csv'})
+
+    raw_query = "[out:csv('name',::id,::type)][timeout:900];area(3600049915)->.searchArea;(relation['admin_level'='4'](area.searchArea););out body;"
+
+    expect(overpass.raw_query(raw_query)).to be_a(Array)
+  end
 end

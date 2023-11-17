@@ -1,5 +1,7 @@
+# encoding 'utf-8'
 require 'httpi'
 require 'json'
+require 'csv'
 
 module OverpassAPI
   # base class, ql and xml extend this
@@ -12,6 +14,7 @@ module OverpassAPI
 
       @endpoint = args[:endpoint] || DEFAULT_ENDPOINT
       @timeout = args[:timeout]
+      @out = args[:out] || 'json'
     end
 
     def bounding_box(south, north, west, east)
@@ -30,7 +33,12 @@ module OverpassAPI
 
     def perform(query)
       r = HTTPI::Request.new(url: @endpoint, body: query)
-      JSON.parse(HTTPI.post(r).body, symbolize_names: true)
+      if @out.include?('csv')
+        csv = CSV.parse(HTTPI.post(r).body.force_encoding('utf-8'), headers: true, col_sep: "\t")
+        JSON.parse(csv.map(&:to_h).to_json, symbolize_names: true)
+      else
+        JSON.parse(HTTPI.post(r).body, symbolize_names: true)
+      end
     end
   end
 end
