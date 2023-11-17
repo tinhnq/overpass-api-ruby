@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'overpass-api-ruby'
+  spec.name          = 'overpass-api-ruby-wcsv'
   spec.version       = OverpassAPI::VERSION
   spec.authors       = ['Bruno Salerno']
   spec.email         = ['br.salerno@gmail.com']
   spec.description   = 'A Ruby wrapper for OpenStreetMap Overpass API'
   spec.summary       = 'This gem will allow you to perform queries to'\
                        'OSM Overpass API using QL or XML'
-  spec.homepage      = 'https://github.com/tinhnq/overpass-api-ruby'
+  spec.homepage      = 'https://github.com/tinhnq/overpass-api-ruby-wcsv'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($RS)
