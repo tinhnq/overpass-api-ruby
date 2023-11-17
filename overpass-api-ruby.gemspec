@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'A Ruby wrapper for OpenStreetMap Overpass API'
   spec.summary       = 'This gem will allow you to perform queries to'\
                        'OSM Overpass API using QL or XML'
-  spec.homepage      = 'https://github.com/BrunoSalerno/overpass-api-ruby'
+  spec.homepage      = 'https://github.com/tinhnq/overpass-api-ruby'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($RS)
